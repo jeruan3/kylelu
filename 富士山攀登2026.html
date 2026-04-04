@@ -1,0 +1,2249 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>🗻 富士山攀登｜2026 Aug.</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&family=Playfair+Display:wght@700;900&display=swap');
+
+    :root {
+      --fuji-blue: #1a3a5c;
+      --fuji-light: #4a8ab5;
+      --fuji-sky: #a8d8ea;
+      --fuji-snow: #f0f4f8;
+      --fuji-orange: #e8734a;
+      --fuji-gold: #f0c060;
+      --fuji-red: #c0392b;
+      --text-dark: #1e2a38;
+      --text-mid: #4a5568;
+      --text-light: #718096;
+      --card-bg: rgba(255,255,255,0.92);
+      --section-bg: #f7fafd;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Noto Sans TC', sans-serif;
+      color: var(--text-dark);
+      background: var(--fuji-snow);
+      overflow-x: hidden;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      background: linear-gradient(
+        160deg,
+        #0b1e35 0%,
+        #1a3a5c 35%,
+        #2d6a9f 65%,
+        #a8d8ea 100%
+      );
+    }
+
+    .hero-mountain {
+      position: absolute;
+      bottom: 0; left: 50%;
+      transform: translateX(-50%);
+      width: 100%;
+      max-width: 1400px;
+    }
+
+    .hero-stars {
+      position: absolute;
+      inset: 0;
+      background-image:
+        radial-gradient(1.5px 1.5px at 10% 20%, rgba(255,255,255,.9) 0%, transparent 100%),
+        radial-gradient(1px 1px at 30% 10%, rgba(255,255,255,.7) 0%, transparent 100%),
+        radial-gradient(1px 1px at 50% 5%, rgba(255,255,255,.8) 0%, transparent 100%),
+        radial-gradient(2px 2px at 70% 15%, rgba(255,255,255,.6) 0%, transparent 100%),
+        radial-gradient(1px 1px at 90% 8%, rgba(255,255,255,.9) 0%, transparent 100%),
+        radial-gradient(1px 1px at 20% 40%, rgba(255,255,255,.5) 0%, transparent 100%),
+        radial-gradient(1.5px 1.5px at 60% 30%, rgba(255,255,255,.7) 0%, transparent 100%),
+        radial-gradient(1px 1px at 80% 25%, rgba(255,255,255,.6) 0%, transparent 100%),
+        radial-gradient(1px 1px at 40% 35%, rgba(255,255,255,.4) 0%, transparent 100%),
+        radial-gradient(2px 2px at 15% 50%, rgba(255,255,255,.5) 0%, transparent 100%);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 10;
+      text-align: center;
+      color: white;
+      padding: 2rem;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      background: rgba(255,255,255,.15);
+      border: 1px solid rgba(255,255,255,.3);
+      backdrop-filter: blur(8px);
+      border-radius: 50px;
+      padding: .5rem 1.5rem;
+      font-size: .85rem;
+      letter-spacing: .15em;
+      margin-bottom: 1.5rem;
+      animation: fadeDown .8s ease both;
+    }
+
+    .hero-title {
+      font-family: 'Playfair Display', 'Noto Sans TC', serif;
+      font-size: clamp(2.8rem, 8vw, 6.5rem);
+      font-weight: 900;
+      line-height: 1.05;
+      text-shadow: 0 4px 30px rgba(0,0,0,.4);
+      animation: fadeDown .9s .1s ease both;
+    }
+
+    .hero-subtitle {
+      font-size: clamp(1rem, 2.5vw, 1.5rem);
+      font-weight: 300;
+      opacity: .85;
+      margin-top: 1rem;
+      letter-spacing: .05em;
+      animation: fadeDown 1s .2s ease both;
+    }
+
+    .hero-date {
+      margin-top: 2rem;
+      display: flex;
+      gap: 1.5rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      animation: fadeDown 1s .3s ease both;
+    }
+
+    .hero-stat {
+      background: rgba(255,255,255,.12);
+      border: 1px solid rgba(255,255,255,.25);
+      backdrop-filter: blur(10px);
+      border-radius: 16px;
+      padding: .8rem 1.5rem;
+      text-align: center;
+      min-width: 110px;
+    }
+
+    .hero-stat .num {
+      display: block;
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--fuji-gold);
+    }
+
+    .hero-stat .label {
+      font-size: .75rem;
+      opacity: .8;
+      letter-spacing: .05em;
+    }
+
+    .scroll-hint {
+      position: absolute;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 10;
+      color: rgba(255,255,255,.6);
+      font-size: .8rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: .4rem;
+      animation: bounce 2s infinite;
+    }
+
+    .scroll-hint::before {
+      content: '';
+      width: 1px;
+      height: 40px;
+      background: linear-gradient(to bottom, transparent, rgba(255,255,255,.6));
+    }
+
+    /* ── SVG Mountain ── */
+    .mountain-svg {
+      width: 100%;
+      height: auto;
+    }
+
+    /* ── NAV ── */
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(26,58,92,.95);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255,255,255,.08);
+    }
+
+    .nav-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: .9rem 2rem;
+    }
+
+    .nav-logo {
+      color: white;
+      font-weight: 700;
+      font-size: 1.1rem;
+      letter-spacing: .05em;
+    }
+
+    .nav-logo span { color: var(--fuji-gold); }
+
+    .nav-links {
+      display: flex;
+      gap: 1.5rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: rgba(255,255,255,.8);
+      text-decoration: none;
+      font-size: .9rem;
+      transition: color .2s;
+    }
+
+    .nav-links a:hover { color: var(--fuji-gold); }
+
+    /* ── SECTIONS ── */
+    .section {
+      padding: 5rem 1.5rem;
+    }
+
+    .section-alt { background: white; }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      background: linear-gradient(135deg, var(--fuji-blue), var(--fuji-light));
+      color: white;
+      border-radius: 50px;
+      padding: .35rem 1rem;
+      font-size: .8rem;
+      font-weight: 500;
+      letter-spacing: .08em;
+      margin-bottom: 1rem;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', 'Noto Sans TC', serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      color: var(--fuji-blue);
+      margin-bottom: 1rem;
+      line-height: 1.2;
+    }
+
+    .section-desc {
+      color: var(--text-mid);
+      font-size: 1.05rem;
+      max-width: 680px;
+      line-height: 1.8;
+      margin-bottom: 3rem;
+    }
+
+    /* ── KEY DECISIONS ── */
+    .decision-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .decision-card {
+      background: linear-gradient(135deg, var(--fuji-blue) 0%, #2d6a9f 100%);
+      color: white;
+      border-radius: 20px;
+      padding: 2rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .decision-card::before {
+      content: '';
+      position: absolute;
+      top: -40%;
+      right: -20%;
+      width: 200px;
+      height: 200px;
+      background: rgba(255,255,255,.05);
+      border-radius: 50%;
+    }
+
+    .decision-card .icon {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .decision-card h3 {
+      font-size: 1.15rem;
+      margin-bottom: .6rem;
+      font-weight: 700;
+    }
+
+    .decision-card p {
+      font-size: .9rem;
+      opacity: .85;
+      line-height: 1.7;
+    }
+
+    .highlight-tag {
+      display: inline-block;
+      background: var(--fuji-gold);
+      color: var(--fuji-blue);
+      border-radius: 6px;
+      padding: .15rem .6rem;
+      font-size: .75rem;
+      font-weight: 700;
+      margin-top: .8rem;
+    }
+
+    /* ── ROUTE COMPARISON ── */
+    .route-tabs {
+      display: flex;
+      gap: .5rem;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .route-tab {
+      padding: .6rem 1.4rem;
+      border-radius: 50px;
+      border: 2px solid var(--fuji-blue);
+      background: transparent;
+      color: var(--fuji-blue);
+      font-family: inherit;
+      font-size: .9rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all .2s;
+    }
+
+    .route-tab.active, .route-tab:hover {
+      background: var(--fuji-blue);
+      color: white;
+    }
+
+    .route-tab.selected-star::after {
+      content: ' ⭐';
+    }
+
+    .routes-table-wrapper {
+      overflow-x: auto;
+      border-radius: 16px;
+      box-shadow: 0 4px 30px rgba(26,58,92,.1);
+    }
+
+    .routes-table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 700px;
+      font-size: .9rem;
+    }
+
+    .routes-table thead {
+      background: linear-gradient(135deg, var(--fuji-blue), #2d6a9f);
+      color: white;
+    }
+
+    .routes-table th {
+      padding: 1rem 1.2rem;
+      text-align: left;
+      font-weight: 600;
+      font-size: .85rem;
+      letter-spacing: .04em;
+    }
+
+    .routes-table td {
+      padding: .9rem 1.2rem;
+      border-bottom: 1px solid #e8edf3;
+      vertical-align: top;
+      line-height: 1.6;
+    }
+
+    .routes-table tbody tr:last-child td { border-bottom: none; }
+
+    .routes-table tbody tr:hover { background: rgba(168,216,234,.1); }
+
+    .routes-table tbody tr.highlight-row {
+      background: rgba(240,192,96,.08);
+    }
+
+    .routes-table tbody tr.highlight-row td:first-child {
+      border-left: 3px solid var(--fuji-gold);
+    }
+
+    .badge {
+      display: inline-block;
+      padding: .2rem .7rem;
+      border-radius: 50px;
+      font-size: .75rem;
+      font-weight: 600;
+    }
+
+    .badge-green { background: #d1fae5; color: #065f46; }
+    .badge-blue { background: #dbeafe; color: #1e40af; }
+    .badge-orange { background: #fed7aa; color: #c2410c; }
+    .badge-red { background: #fde8e8; color: var(--fuji-red); }
+    .badge-gold { background: #fef3c7; color: #92400e; }
+
+    /* ── HUT CARDS ── */
+    .hut-priority {
+      display: flex;
+      gap: 1.5rem;
+      margin-bottom: 2.5rem;
+      flex-wrap: wrap;
+    }
+
+    .priority-card {
+      flex: 1;
+      min-width: 280px;
+      border-radius: 20px;
+      padding: 1.8rem;
+      position: relative;
+      overflow: hidden;
+      border: 2px solid transparent;
+    }
+
+    .priority-card.p1 {
+      background: linear-gradient(135deg, #fff8e1 0%, #fffde7 100%);
+      border-color: var(--fuji-gold);
+    }
+
+    .priority-card.p2 {
+      background: linear-gradient(135deg, #e8f4fd 0%, #f0f8ff 100%);
+      border-color: var(--fuji-light);
+    }
+
+    .priority-card.p3 {
+      background: linear-gradient(135deg, #fdf0f0 0%, #fff5f5 100%);
+      border-color: #e57373;
+    }
+
+    .priority-num {
+      font-size: 3rem;
+      font-weight: 900;
+      opacity: .12;
+      position: absolute;
+      top: .5rem;
+      right: 1rem;
+      line-height: 1;
+    }
+
+    .priority-label {
+      font-size: .75rem;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      margin-bottom: .5rem;
+    }
+
+    .priority-card.p1 .priority-label { color: #b7791f; }
+    .priority-card.p2 .priority-label { color: var(--fuji-blue); }
+    .priority-card.p3 .priority-label { color: #c53030; }
+
+    .priority-name {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--text-dark);
+      margin-bottom: .3rem;
+    }
+
+    .priority-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .5rem;
+      margin-top: .8rem;
+    }
+
+    .meta-chip {
+      background: rgba(26,58,92,.08);
+      border-radius: 50px;
+      padding: .25rem .8rem;
+      font-size: .78rem;
+      color: var(--text-mid);
+    }
+
+    .hut-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.2rem;
+    }
+
+    .hut-card {
+      background: white;
+      border-radius: 16px;
+      padding: 1.4rem;
+      border: 1px solid #e2e8f0;
+      transition: transform .2s, box-shadow .2s;
+    }
+
+    .hut-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 30px rgba(26,58,92,.12);
+    }
+
+    .hut-name {
+      font-weight: 700;
+      font-size: 1rem;
+      color: var(--fuji-blue);
+      margin-bottom: .3rem;
+    }
+
+    .hut-elev {
+      font-size: .82rem;
+      color: var(--text-light);
+      margin-bottom: .6rem;
+    }
+
+    .hut-price {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--fuji-orange);
+    }
+
+    .hut-note {
+      font-size: .8rem;
+      color: var(--text-mid);
+      margin-top: .5rem;
+      line-height: 1.5;
+    }
+
+    /* ── TIMELINE ── */
+    .timeline {
+      position: relative;
+      padding-left: 2.5rem;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: linear-gradient(to bottom, var(--fuji-blue), var(--fuji-sky));
+      border-radius: 2px;
+    }
+
+    .timeline-day {
+      margin-bottom: 3rem;
+    }
+
+    .timeline-day-title {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--fuji-blue);
+      margin-bottom: 1.2rem;
+      position: relative;
+    }
+
+    .timeline-day-title::before {
+      content: '';
+      position: absolute;
+      left: -2.8rem;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 14px;
+      height: 14px;
+      background: var(--fuji-blue);
+      border-radius: 50%;
+      border: 3px solid white;
+      box-shadow: 0 0 0 2px var(--fuji-blue);
+    }
+
+    .timeline-events {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .timeline-event {
+      display: flex;
+      gap: 1rem;
+      background: white;
+      border-radius: 14px;
+      padding: 1rem 1.2rem;
+      border: 1px solid #e2e8f0;
+      align-items: flex-start;
+    }
+
+    .event-time {
+      min-width: 80px;
+      font-size: .85rem;
+      font-weight: 700;
+      color: var(--fuji-blue);
+      padding-top: .1rem;
+    }
+
+    .event-icon {
+      font-size: 1.3rem;
+      min-width: 2rem;
+    }
+
+    .event-content h4 {
+      font-size: .95rem;
+      font-weight: 600;
+      color: var(--text-dark);
+      margin-bottom: .2rem;
+    }
+
+    .event-content p {
+      font-size: .82rem;
+      color: var(--text-mid);
+      line-height: 1.5;
+    }
+
+    /* ── TRANSPORT ── */
+    .transport-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .transport-card {
+      background: white;
+      border-radius: 20px;
+      padding: 2rem;
+      border: 1px solid #e2e8f0;
+      box-shadow: 0 2px 20px rgba(26,58,92,.06);
+    }
+
+    .transport-card .t-header {
+      display: flex;
+      align-items: center;
+      gap: .8rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .transport-card .t-icon {
+      width: 48px;
+      height: 48px;
+      background: linear-gradient(135deg, var(--fuji-blue), var(--fuji-light));
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+    }
+
+    .transport-card h3 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--fuji-blue);
+    }
+
+    .transport-card .t-num {
+      font-size: .8rem;
+      color: var(--text-light);
+    }
+
+    .transport-info {
+      display: flex;
+      flex-direction: column;
+      gap: .7rem;
+    }
+
+    .t-row {
+      display: flex;
+      gap: .8rem;
+      font-size: .88rem;
+    }
+
+    .t-key {
+      min-width: 55px;
+      font-weight: 600;
+      color: var(--text-mid);
+      font-size: .8rem;
+    }
+
+    .t-val { color: var(--text-dark); line-height: 1.5; }
+
+    /* ── ATTRACTIONS ── */
+    .attraction-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .attraction-card {
+      background: white;
+      border-radius: 20px;
+      overflow: hidden;
+      border: 1px solid #e2e8f0;
+      box-shadow: 0 2px 20px rgba(26,58,92,.06);
+      transition: transform .2s, box-shadow .2s;
+    }
+
+    .attraction-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 40px rgba(26,58,92,.14);
+    }
+
+    .attraction-header {
+      padding: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .attraction-emoji {
+      font-size: 2.5rem;
+      width: 60px;
+      height: 60px;
+      background: var(--fuji-snow);
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .attraction-card h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--fuji-blue);
+      line-height: 1.3;
+    }
+
+    .attraction-sub {
+      font-size: .78rem;
+      color: var(--text-light);
+      margin-top: .2rem;
+    }
+
+    .attraction-body {
+      padding: 0 1.5rem 1.5rem;
+      font-size: .87rem;
+      color: var(--text-mid);
+      line-height: 1.7;
+      border-top: 1px solid #f0f4f8;
+      padding-top: 1rem;
+    }
+
+    /* ── REGULATIONS ── */
+    .regulation-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.2rem;
+    }
+
+    .reg-card {
+      background: white;
+      border-radius: 16px;
+      padding: 1.5rem;
+      border-left: 4px solid var(--fuji-orange);
+      box-shadow: 0 2px 15px rgba(26,58,92,.07);
+    }
+
+    .reg-card .reg-icon {
+      font-size: 1.8rem;
+      margin-bottom: .7rem;
+    }
+
+    .reg-card h4 {
+      font-weight: 700;
+      color: var(--fuji-blue);
+      margin-bottom: .4rem;
+      font-size: .95rem;
+    }
+
+    .reg-card p {
+      font-size: .85rem;
+      color: var(--text-mid);
+      line-height: 1.6;
+    }
+
+    .warning-box {
+      background: linear-gradient(135deg, #fff8e1, #fffde7);
+      border: 1.5px solid var(--fuji-gold);
+      border-radius: 16px;
+      padding: 1.4rem 1.8rem;
+      margin-bottom: 2rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+    }
+
+    .warning-box .w-icon { font-size: 1.8rem; }
+
+    .warning-box p {
+      font-size: .9rem;
+      color: #7c5c00;
+      line-height: 1.6;
+    }
+
+    .warning-box strong { color: #5c4200; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--fuji-blue);
+      color: rgba(255,255,255,.7);
+      text-align: center;
+      padding: 3rem 2rem;
+      font-size: .9rem;
+      line-height: 1.8;
+    }
+
+    footer strong { color: white; }
+
+    footer .footer-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      color: var(--fuji-gold);
+      margin-bottom: .5rem;
+    }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeDown {
+      from { opacity: 0; transform: translateY(-20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50%       { transform: translateX(-50%) translateY(-8px); }
+    }
+
+    .fade-in {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity .7s ease, transform .7s ease;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .section { padding: 3.5rem 1rem; }
+      .hut-priority { flex-direction: column; }
+      .timeline { padding-left: 1.8rem; }
+    }
+
+    /* ── DIVIDER ── */
+    .wave-divider {
+      width: 100%;
+      overflow: hidden;
+      line-height: 0;
+    }
+
+    .wave-divider svg {
+      display: block;
+      width: 100%;
+    }
+
+    /* ── PROGRESS BAR ── */
+    .elev-bar-wrap {
+      margin: 2rem 0;
+    }
+
+    .elev-bar-row {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: .8rem;
+      font-size: .87rem;
+    }
+
+    .elev-bar-label {
+      min-width: 160px;
+      color: var(--text-mid);
+      font-weight: 500;
+    }
+
+    .elev-bar-track {
+      flex: 1;
+      height: 10px;
+      background: #e2e8f0;
+      border-radius: 50px;
+      overflow: hidden;
+    }
+
+    .elev-bar-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--fuji-blue), var(--fuji-light));
+      border-radius: 50px;
+      transition: width 1s ease;
+    }
+
+    .elev-bar-value {
+      min-width: 60px;
+      font-weight: 700;
+      color: var(--fuji-blue);
+      text-align: right;
+    }
+
+    /* ── CALLOUT ── */
+    .callout-box {
+      background: linear-gradient(135deg, var(--fuji-blue) 0%, #2d6a9f 100%);
+      color: white;
+      border-radius: 20px;
+      padding: 2.5rem;
+      margin: 2rem 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .callout-box::before {
+      content: '🗻';
+      position: absolute;
+      right: 2rem;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 6rem;
+      opacity: .08;
+    }
+
+    .callout-box h3 {
+      font-size: 1.3rem;
+      font-weight: 700;
+      margin-bottom: .8rem;
+    }
+
+    .callout-box p {
+      font-size: .95rem;
+      opacity: .9;
+      line-height: 1.7;
+    }
+
+    .callout-box .highlight {
+      color: var(--fuji-gold);
+      font-weight: 700;
+    }
+
+    /* ── HUT VIEW TOGGLE ── */
+    .hut-view-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin: 2.5rem 0 1.2rem;
+    }
+
+    .hut-view-header h3 {
+      color: var(--fuji-blue);
+      font-size: 1.15rem;
+    }
+
+    .hut-toggle {
+      display: flex;
+      background: var(--fuji-snow);
+      border-radius: 10px;
+      padding: 3px;
+      gap: 2px;
+      border: 1px solid #e2e8f0;
+    }
+
+    .hut-toggle-btn {
+      display: flex;
+      align-items: center;
+      gap: .4rem;
+      padding: .45rem .9rem;
+      border: none;
+      background: transparent;
+      border-radius: 8px;
+      font-family: inherit;
+      font-size: .82rem;
+      font-weight: 600;
+      color: var(--text-mid);
+      cursor: pointer;
+      transition: all .2s;
+    }
+
+    .hut-toggle-btn.active {
+      background: white;
+      color: var(--fuji-blue);
+      box-shadow: 0 1px 6px rgba(26,58,92,.12);
+    }
+
+    .hut-zone {
+      font-size: .7rem;
+      font-weight: 700;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      color: var(--fuji-light);
+      margin-bottom: .2rem;
+    }
+
+    .hut-p1 { border: 2px solid var(--fuji-gold) !important; }
+    .hut-p2 { border: 2px solid var(--fuji-light) !important; }
+    .hut-p3 { border: 2px solid #e57373 !important; }
+
+    /* ── ROUTE TABS ── */
+    .rtab-wrap {
+      margin-top: 1.5rem;
+      border-radius: 20px;
+      overflow: hidden;
+      border: 1px solid #e2e8f0;
+      box-shadow: 0 4px 24px rgba(26,58,92,.08);
+    }
+
+    .rtab-btns {
+      display: flex;
+      background: var(--fuji-snow);
+      border-bottom: 1px solid #e2e8f0;
+    }
+
+    .rtab-btn {
+      flex: 1;
+      padding: .9rem 1.5rem;
+      border: none;
+      background: transparent;
+      font-family: inherit;
+      font-size: .95rem;
+      font-weight: 600;
+      color: var(--text-mid);
+      cursor: pointer;
+      transition: all .2s;
+      border-bottom: 3px solid transparent;
+      margin-bottom: -1px;
+    }
+
+    .rtab-btn:hover { color: var(--fuji-blue); }
+
+    .rtab-btn.active {
+      color: var(--fuji-blue);
+      background: white;
+      border-bottom-color: var(--fuji-blue);
+    }
+
+    .rtab-panel { background: white; }
+
+    .rtab-inner {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 0;
+      align-items: stretch;
+      min-height: 400px;
+    }
+
+    .rtab-img {
+      border-right: 1px solid #f0f4f8;
+      background: #f7fafd;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .rtab-img img {
+      width: 100%;
+      height: 100%;
+      max-height: 520px;
+      object-fit: contain;
+      display: block;
+      padding: 1.2rem;
+    }
+
+    .rtab-card {
+      border: none !important;
+      border-radius: 0 !important;
+      box-shadow: none !important;
+      height: 100%;
+    }
+
+    .rtab-card .route-info-title {
+      position: sticky;
+      top: 0;
+    }
+
+    @media (max-width: 680px) {
+      .rtab-inner { grid-template-columns: 1fr; min-height: auto; }
+      .rtab-img { border-right: none; border-bottom: 1px solid #f0f4f8; min-height: 260px; }
+    }
+
+    .route-info-card {
+      background: white;
+      border-radius: 14px;
+      border: 1px solid #e2e8f0;
+      overflow: hidden;
+      box-shadow: 0 2px 12px rgba(26,58,92,.07);
+    }
+
+    .route-info-title {
+      font-size: .85rem;
+      font-weight: 700;
+      padding: .7rem 1.2rem;
+      letter-spacing: .04em;
+    }
+
+    .route-info-card.up .route-info-title {
+      background: linear-gradient(135deg, #1a3a5c, #2d6a9f);
+      color: white;
+    }
+
+    .route-info-card.down .route-info-title {
+      background: linear-gradient(135deg, #4a5568, #718096);
+      color: white;
+    }
+
+    .route-info-list {
+      list-style: none;
+      padding: .8rem 1.2rem;
+      display: flex;
+      flex-direction: column;
+      gap: .6rem;
+    }
+
+    .route-info-list li {
+      font-size: .82rem;
+      color: var(--text-mid);
+      line-height: 1.5;
+      display: flex;
+      gap: .5rem;
+      align-items: flex-start;
+    }
+
+    .route-seg {
+      display: inline-block;
+      background: var(--fuji-snow);
+      border-radius: 4px;
+      padding: .1rem .5rem;
+      font-size: .75rem;
+      font-weight: 600;
+      color: var(--fuji-blue);
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    @media (max-width: 768px) {
+      .route-layout { flex-direction: column; }
+    }
+
+    /* ── YOSHIDA INFO CARD ── */
+    .yinfo-card {
+      background: white;
+      border-radius: 20px;
+      border: 1px solid #e2e8f0;
+      box-shadow: 0 4px 24px rgba(26,58,92,.08);
+      overflow: hidden;
+      margin: 1.5rem 0;
+    }
+
+    .yinfo-header {
+      background: linear-gradient(135deg, var(--fuji-blue), #2d6a9f);
+      color: white;
+      font-size: .8rem;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      padding: .6rem 1.8rem;
+    }
+
+    .yinfo-stats {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0;
+      border-bottom: 1px solid #f0f4f8;
+    }
+
+    .yinfo-stat {
+      flex: 1;
+      min-width: 120px;
+      padding: 1.2rem 1.5rem;
+      border-right: 1px solid #f0f4f8;
+      text-align: center;
+    }
+
+    .yinfo-stat:last-child { border-right: none; }
+
+    .yinfo-val {
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: var(--fuji-blue);
+      line-height: 1.2;
+    }
+
+    .yinfo-key {
+      font-size: .75rem;
+      color: var(--text-light);
+      margin-top: .3rem;
+      line-height: 1.4;
+    }
+
+    .yinfo-key small {
+      font-size: .7rem;
+      opacity: .8;
+    }
+
+    .yinfo-desc {
+      padding: 1.3rem 1.8rem;
+      font-size: .9rem;
+      color: var(--text-mid);
+      line-height: 1.8;
+    }
+
+    .yinfo-terrain {
+      display: inline-block;
+      margin-top: .7rem;
+      background: var(--fuji-snow);
+      border-radius: 6px;
+      padding: .25rem .8rem;
+      font-size: .8rem;
+      color: var(--fuji-blue);
+      font-weight: 500;
+    }
+
+    @media (max-width: 600px) {
+      .yinfo-stat { min-width: 90px; padding: 1rem; }
+      .yinfo-val { font-size: 1.1rem; }
+    }
+
+    /* ── NOTION BLOCK ── */
+    .notion-block {
+      background: white;
+      border-left: 4px solid var(--fuji-blue);
+      border-radius: 0 16px 16px 0;
+      padding: 2rem 2.5rem;
+      box-shadow: 0 4px 24px rgba(26,58,92,.08);
+      max-width: 780px;
+    }
+
+    .notion-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 1.1rem;
+      padding: 0;
+    }
+
+    .notion-list > li {
+      padding-left: 1.4rem;
+      position: relative;
+      font-size: 1rem;
+      color: var(--text-dark);
+      line-height: 1.75;
+    }
+
+    .notion-list > li::before {
+      content: '•';
+      position: absolute;
+      left: 0;
+      color: var(--fuji-blue);
+      font-size: 1.2rem;
+      line-height: 1.6;
+    }
+
+    .notion-sublist {
+      list-style: none;
+      padding: .5rem 0 .5rem 1.2rem;
+      display: flex;
+      flex-direction: column;
+      gap: .4rem;
+    }
+
+    .notion-sublist li {
+      position: relative;
+      padding-left: 1.2rem;
+      color: var(--text-mid);
+      font-size: .95rem;
+    }
+
+    .notion-sublist li::before {
+      content: '◦';
+      position: absolute;
+      left: 0;
+      color: var(--fuji-light);
+    }
+
+    /* ── PHOTOS ── */
+    .photo-row {
+      display: flex;
+      gap: 1rem;
+      margin: 1.5rem 0;
+      flex-wrap: wrap;
+    }
+
+    .photo-box {
+      flex: 1;
+      min-width: 200px;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(26,58,92,.12);
+      background: #e8edf3;
+    }
+
+    .photo-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform .4s ease;
+    }
+
+    .photo-box:hover img { transform: scale(1.03); }
+
+    .photo-box.tall { min-height: 300px; }
+    .photo-box.medium { min-height: 220px; }
+
+    .photo-caption {
+      font-size: .78rem;
+      color: var(--text-light);
+      text-align: center;
+      padding: .4rem .6rem;
+      background: white;
+    }
+
+    .map-img {
+      width: 100%;
+      border-radius: 16px;
+      box-shadow: 0 4px 20px rgba(26,58,92,.12);
+      display: block;
+    }
+
+    .map-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.2rem;
+      margin: 1.5rem 0;
+    }
+
+    .map-card {
+      background: white;
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid #e2e8f0;
+      box-shadow: 0 2px 15px rgba(26,58,92,.08);
+    }
+
+    .map-card img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .map-card .map-label {
+      padding: .7rem 1rem;
+      font-size: .85rem;
+      font-weight: 600;
+      color: var(--fuji-blue);
+      border-top: 1px solid #f0f4f8;
+    }
+
+    .attraction-card .attraction-photo-wrap {
+      width: 100%;
+      height: 180px;
+      overflow: hidden;
+      background: #e8edf3;
+    }
+
+    .attraction-card .attraction-photo-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform .4s ease;
+    }
+
+    .attraction-card:hover .attraction-photo-wrap img {
+      transform: scale(1.05);
+    }
+
+    .goraiko-banner {
+      width: 100%;
+      border-radius: 20px;
+      overflow: hidden;
+      margin: 2rem 0;
+      position: relative;
+      box-shadow: 0 8px 40px rgba(26,58,92,.2);
+    }
+
+    .goraiko-banner img {
+      width: 100%;
+      max-height: 420px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .goraiko-banner .overlay {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      background: linear-gradient(to top, rgba(0,0,0,.7), transparent);
+      color: white;
+      padding: 2rem 2rem 1.5rem;
+    }
+
+    .goraiko-banner .overlay h3 {
+      font-size: 1.5rem;
+      margin-bottom: .3rem;
+    }
+
+    .goraiko-banner .overlay p {
+      font-size: .9rem;
+      opacity: .85;
+    }
+
+    @media (max-width: 768px) {
+      .map-row { grid-template-columns: 1fr; }
+      .photo-row { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ════════════════ HERO ════════════════ -->
+<section class="hero">
+  <div class="hero-stars"></div>
+
+  <!-- SVG Mountain Silhouette -->
+  <svg class="hero-mountain" viewBox="0 0 1440 500" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+    <defs>
+      <linearGradient id="snowGrad" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#ffffff" stop-opacity="1"/>
+        <stop offset="100%" stop-color="#c8dce8" stop-opacity="1"/>
+      </linearGradient>
+      <linearGradient id="mountainGrad" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#2d4a6d"/>
+        <stop offset="100%" stop-color="#1a3a5c"/>
+      </linearGradient>
+      <linearGradient id="cloudGrad" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="rgba(168,216,234,0.5)"/>
+        <stop offset="100%" stop-color="rgba(168,216,234,0)"/>
+      </linearGradient>
+    </defs>
+    <!-- Cloud layer -->
+    <ellipse cx="720" cy="320" rx="900" ry="80" fill="url(#cloudGrad)"/>
+    <!-- Mountain body -->
+    <polygon points="720,30 200,500 1240,500" fill="url(#mountainGrad)"/>
+    <!-- Snow cap -->
+    <polygon points="720,30 580,180 860,180" fill="url(#snowGrad)" opacity="0.95"/>
+    <!-- Snow detail -->
+    <polygon points="720,30 630,145 810,145" fill="white" opacity="0.85"/>
+    <!-- Forest base -->
+    <rect x="0" y="430" width="1440" height="70" fill="#1a3a5c" opacity="0.6"/>
+    <!-- Lake reflection -->
+    <ellipse cx="720" cy="500" rx="350" ry="30" fill="rgba(74,138,181,0.3)"/>
+  </svg>
+
+  <div class="hero-content">
+    <div class="hero-badge">🗻 2026 SUMMER EXPEDITION</div>
+    <h1 class="hero-title">富士山攀登</h1>
+    <p class="hero-subtitle">Mount Fuji｜吉田路線・御來光之旅</p>
+
+    <div class="hero-date">
+      <div class="hero-stat">
+        <span class="num">3,776</span>
+        <span class="label">公尺 海拔</span>
+      </div>
+      <div class="hero-stat">
+        <span class="num">8/7</span>
+        <span class="label">起登日期</span>
+      </div>
+      <div class="hero-stat">
+        <span class="num">04:54</span>
+        <span class="label">日出時刻</span>
+      </div>
+      <div class="hero-stat">
+        <span class="num">吉田</span>
+        <span class="label">路線選擇</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="scroll-hint">向下探索</div>
+</section>
+
+<!-- ════════════════ NAV ════════════════ -->
+<nav class="nav">
+  <div class="nav-inner">
+    <div class="nav-logo">🗻 富士山 <span>2026</span></div>
+    <ul class="nav-links">
+      <li><a href="#decisions">重點決議</a></li>
+      <li><a href="#route">路線規劃</a></li>
+      <li><a href="#huts">山屋資訊</a></li>
+      <li><a href="#schedule">行程安排</a></li>
+      <li><a href="#transport">交通方式</a></li>
+      <li><a href="#attractions">特色景點</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- ════════════════ KEY DECISIONS ════════════════ -->
+<section class="section" id="decisions">
+  <div class="container">
+    <div class="section-label">📋 重點決議</div>
+    <div class="notion-block fade-in">
+      <ul class="notion-list">
+        <li>富士山登山路線有四個路線，考量到前面行程會參與河口湖花火節，在交通方便性選擇吉田 <strong>（Yoshida）</strong>。</li>
+        <li>攀登時間通常為 2 天 1 夜，目前首要要搶的是 Day1 山屋。目前目標依順序有：
+          <ul class="notion-sublist">
+            <li>本八合目</li>
+            <li>八合目</li>
+            <li>八合五勺（御來光館）</li>
+          </ul>
+          大家可以看目標幾個山屋的內部設施狀況，有偏好可提出～ 後續接近預定時間（5月）前會再確認更多細節。
+        </li>
+        <li>Day1 起登集合時間，待確認預定到山屋後討論決定。</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════ ROUTE ════════════════ -->
+<section class="section section-alt" id="route">
+  <div class="container">
+    <div class="section-label">🔴 登山路線規劃</div>
+    <h2 class="section-title">四大路線比較</h2>
+    <p class="section-desc">
+      富士山的主要登山道，4 條代表性路線：吉田（Yoshida）、富士宮（Fujinomiya）、須走（Subashiri）、御殿場（Gotemba）。這四條路線分別位在山梨縣與靜岡縣不同方位，海拔起點、路程長短、人潮、山屋與補給密度都不同，行程安排也會跟著改變。其中吉田和富士宮路線因山屋較多、路況較好，適合登山新手攀登的路線；須走和御殿場路線較長或路況較特殊，則是適合具有登山經驗的人。
+    </p>
+
+    <div class="routes-table-wrapper fade-in">
+      <table class="routes-table">
+        <thead>
+          <tr>
+            <th>路線</th>
+            <th>登山口海拔</th>
+            <th>上行距離</th>
+            <th>上行時間</th>
+            <th>人潮</th>
+            <th>適合對象</th>
+            <th>特色</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="highlight-row">
+            <td><strong>⭐ 吉田</strong><br><small style="color:#999">Yoshida・山梨</small></td>
+            <td>2,305m</td>
+            <td>6.8 km</td>
+            <td>約 6 小時</td>
+            <td><span class="badge badge-red">最多</span></td>
+            <td>新手首選</td>
+            <td>山屋最多、指標清楚、交通最成熟</td>
+          </tr>
+          <tr>
+            <td><strong>富士宮</strong><br><small style="color:#999">Fujinomiya・靜岡</small></td>
+            <td>2,400m</td>
+            <td>4.3 km</td>
+            <td>約 5 小時</td>
+            <td><span class="badge badge-orange">多</span></td>
+            <td>想縮短距離者</td>
+            <td>距離最短；視野開闊；上升較直接</td>
+          </tr>
+          <tr>
+            <td><strong>須走</strong><br><small style="color:#999">Subashiri・靜岡</small></td>
+            <td>1,970m</td>
+            <td>6.9 km</td>
+            <td>約 7 小時</td>
+            <td><span class="badge badge-green">較少</span></td>
+            <td>喜歡地形多變者</td>
+            <td>前段森林感；下山砂走り有趣</td>
+          </tr>
+          <tr>
+            <td><strong>御殿場</strong><br><small style="color:#999">Gotemba・靜岡</small></td>
+            <td>1,440m</td>
+            <td>10.5 km</td>
+            <td>約 9 小時</td>
+            <td><span class="badge badge-green">最少</span></td>
+            <td>體能好、避人潮</td>
+            <td>路線最長最挑戰；需有登山經驗</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Route Maps -->
+    <div class="map-row fade-in" style="margin-top:2rem">
+      <div class="map-card">
+        <img src="dd7f1c73-4401-4198-bb9c-d880dc727457.png" alt="富士山四大路線示意圖" loading="lazy">
+        <div class="map-label">🗺️ 四大路線位置示意</div>
+      </div>
+      <div class="map-card">
+        <img src="9cdf34ea-10ab-4ec5-8bd2-96ede24719c9.png" alt="富士山位置（日本地圖）" loading="lazy">
+        <div class="map-label">📍 富士山位置（山梨・靜岡縣境）</div>
+      </div>
+    </div>
+
+    <!-- Yoshida Route Detail -->
+    <div style="margin-top: 3rem;" class="fade-in">
+      <div class="callout-box">
+        <h3>⭐ 吉田路線 — 為什麼選擇這條？</h3>
+        <p>
+          考量富士山攀登前會參加河口湖花火節（8/5），路線上選擇吉田路線，通常是最順路的安排。河口湖和富士吉田本來就在山梨側，去「富士スバルライン五合目」的巴士班次較多。
+        </p>
+      </div>
+
+      <!-- Yoshida Basic Info -->
+      <div class="yinfo-card fade-in">
+        <div class="yinfo-header">基本資訊</div>
+        <div class="yinfo-stats">
+          <div class="yinfo-stat">
+            <div class="yinfo-val">2,305m</div>
+            <div class="yinfo-key">登山口標高<br><small>富士スバルライン五合目</small></div>
+          </div>
+          <div class="yinfo-stat">
+            <div class="yinfo-val">3,776m</div>
+            <div class="yinfo-key">山頂標高<br><small>劍峰</small></div>
+          </div>
+          <div class="yinfo-stat">
+            <div class="yinfo-val">1,471m</div>
+            <div class="yinfo-key">路線爬升</div>
+          </div>
+          <div class="yinfo-stat">
+            <div class="yinfo-val">6.8 km</div>
+            <div class="yinfo-key">上行距離<br><small>約 6 小時</small></div>
+          </div>
+          <div class="yinfo-stat">
+            <div class="yinfo-val">7.0 km</div>
+            <div class="yinfo-key">下行距離<br><small>約 3–3.5 小時</small></div>
+          </div>
+          <div class="yinfo-stat">
+            <div class="yinfo-val">19 間</div>
+            <div class="yinfo-key">沿途山屋</div>
+          </div>
+        </div>
+        <div class="yinfo-desc">
+          吉田路線是富士山四大路線中登山人數最多的一條，使用人數約是第二名富士宮路線的三倍。六合目設有安全指導中心，七合目與八合目於登山季各設救護所，醫療資源豐富。上下山分道設計避免人潮交會，登山道面向東北方，從七合目以上就能直面太平洋方向的日出（御來光），是四條路線中日出景觀最開闊的。
+          <span class="yinfo-terrain">地質特徵：樹林 → 火山砂礫 → 岩場</span>
+        </div>
+      </div>
+
+      <!-- Route Tabs -->
+      <div class="rtab-wrap fade-in">
+        <div class="rtab-btns">
+          <button class="rtab-btn active" onclick="switchRouteTab('up', this)">⬆️ 上山路線</button>
+          <button class="rtab-btn" onclick="switchRouteTab('down', this)">⬇️ 下山路線</button>
+        </div>
+
+        <div class="rtab-panel" id="rtab-up">
+          <div class="rtab-inner">
+            <div class="rtab-img">
+              <img src="image.png" alt="吉田路線上山路線圖" loading="lazy">
+            </div>
+            <div class="route-info-card up rtab-card">
+              <div class="route-info-title">⬆️ 上山路線</div>
+              <ul class="route-info-list">
+                <li><span class="route-seg">五合目 → 六合目</span>穿過森林的平緩上坡路</li>
+                <li><span class="route-seg">六合目 → 七合目</span>火山沙礫鋪成的之字形小徑</li>
+                <li><span class="route-seg">七合目附近開始</span>地形變得陡峭崎嶇</li>
+                <li><span class="route-seg">八合目中段開始</span>與須走路線匯合，非常擁擠</li>
+                <li><span class="route-seg">九合目 → 山頂</span>道路狹窄、多陡峭岩石路段，注意落石</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="rtab-panel" id="rtab-down" style="display:none">
+          <div class="rtab-inner">
+            <div class="rtab-img">
+              <img src="image 1.png" alt="吉田路線下山路線圖" loading="lazy">
+            </div>
+            <div class="route-info-card down rtab-card">
+              <div class="route-info-title">⬇️ 下山路線</div>
+              <ul class="route-info-list">
+                <li><span class="route-seg">專用下山路線</span>沿途無山屋，廁所數量有限</li>
+                <li><span class="route-seg">山頂 → 八合目</span>陡峭岩石碎石路段，部分路段濕滑</li>
+                <li><span class="route-seg">八合目江戶屋附近</span>⚠️ 有岔路通往須走路線，注意黃色路標</li>
+                <li><span class="route-seg">八合目以下</span>之字形碎石路，坡度平緩但揚起大量灰塵，建議戴口罩和太陽眼鏡</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2026 Regulations -->
+    <div style="margin-top:3rem" class="fade-in">
+      <h3 style="color:var(--fuji-blue);font-size:1.3rem;margin-bottom:1.5rem">⚠️ 2026 年攀登管制</h3>
+      <div class="warning-box">
+        <div class="w-icon">📢</div>
+        <p><strong>務必出發前再次確認官方公告！</strong> 自 2024 年起，吉田路線已實施攀登限制，2026 年與去年相比沒有重大變化，但具體細節請以官方最新公告為準。<br><a href="https://www.fujisan-climb.jp/" target="_blank" style="color:#f0c060;font-weight:600;text-decoration:underline;display:inline-flex;align-items:center;gap:.3rem;margin-top:.5rem">🔗 富士登山オフィシャルサイト（官方網站）↗</a></p>
+      </div>
+      <div class="regulation-cards">
+        <div class="reg-card">
+          <div class="reg-icon">📅</div>
+          <h4>開放時間</h4>
+          <p>登山季 7月1日 至 9月10日（可能因天候或殘雪狀況延後開放）</p>
+        </div>
+        <div class="reg-card">
+          <div class="reg-icon">💴</div>
+          <h4>通行費</h4>
+          <p>每人每次 <strong>¥4,000 日圓</strong>，建議事前線上預約登錄（送木質紀念牌）</p>
+        </div>
+        <div class="reg-card">
+          <div class="reg-icon">🚧</div>
+          <h4>每日人數上限</h4>
+          <p>每日 <strong>4,000 人</strong>（山屋住宿者不在此限）；大門 14:00 至翌日 03:00 關閉</p>
+        </div>
+        <div class="reg-card">
+          <div class="reg-icon">🎒</div>
+          <h4>必要裝備檢查</h4>
+          <p>防寒衣物、上下分離雨具、合適登山鞋等，裝備不合格<strong>不能上山</strong></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════ HUTS ════════════════ -->
+<section class="section" id="huts">
+  <div class="container">
+    <div class="section-label">🏠 山屋資訊</div>
+    <h2 class="section-title">山屋選定與預約</h2>
+    <p class="section-desc">
+      山屋的選定邏輯是「先決定高度帶，再挑具體山屋」。<br>住在哪個高度，直接影響 Day1 上升距離、起登時間，以及 Day2 凌晨攻頂的路程。
+    </p>
+
+    <!-- Priority -->
+    <h3 style="color:var(--fuji-blue);margin-bottom:1.2rem;font-size:1.15rem">🎯 搶訂優先順序</h3>
+    <div class="hut-priority fade-in">
+      <div class="priority-card p1">
+        <div class="priority-num">P1</div>
+        <div class="priority-label">第一優先</div>
+        <div class="priority-name">本八合目トモエ館</div>
+        <div style="font-size:.85rem;color:var(--text-mid);margin-top:.3rem">
+          海拔 3,400m・本八合目（吉田/須走合流處）
+        </div>
+        <div class="priority-meta">
+          <span class="meta-chip">🗓️ 開放預約：5/11 00:00</span>
+          <span class="meta-chip">💴 ¥8,500 起</span>
+          <span class="meta-chip">🏠 250人</span>
+          <span class="meta-chip">⭐ 台灣山友力推</span>
+        </div>
+        <div style="margin-top:.8rem;font-size:.83rem;color:#7c5c00;background:rgba(240,192,96,.15);border-radius:8px;padding:.6rem .8rem">
+          有台灣山友心得推薦、線上預約方便，Day2 攻頂僅需約 1.5 小時
+        </div>
+      </div>
+
+      <div class="priority-card p2">
+        <div class="priority-num">P2</div>
+        <div class="priority-label">第二優先</div>
+        <div class="priority-name">元祖室 ／ 白雲荘</div>
+        <div style="font-size:.85rem;color:var(--text-mid);margin-top:.3rem">
+          海拔 3,250m / 3,200m・八合目
+        </div>
+        <div class="priority-meta">
+          <span class="meta-chip">🗓️ 元祖室：5/16 10:00</span>
+          <span class="meta-chip">🗓️ 白雲荘：5/1 9:30</span>
+          <span class="meta-chip">💴 ¥9,900–¥10,000</span>
+        </div>
+        <div style="margin-top:.8rem;font-size:.83rem;color:#1e3a5c;background:rgba(74,138,181,.1);border-radius:8px;padding:.6rem .8rem">
+          八合目熱門選擇，白雲荘評價穩定，Day2 攻頂約 3-4 小時
+        </div>
+      </div>
+
+      <div class="priority-card p3">
+        <div class="priority-num">P3</div>
+        <div class="priority-label">第三優先</div>
+        <div class="priority-name">御来光館</div>
+        <div style="font-size:.85rem;color:var(--text-mid);margin-top:.3rem">
+          海拔 3,450m・八合五勺（吉田最高山屋）
+        </div>
+        <div class="priority-meta">
+          <span class="meta-chip">🗓️ 開放預約：5/12 12:00</span>
+          <span class="meta-chip">💴 ¥11,000 起</span>
+          <span class="meta-chip">🏠 160人</span>
+        </div>
+        <div style="margin-top:.8rem;font-size:.83rem;color:#a00;background:rgba(197,57,43,.05);border-radius:8px;padding:.6rem .8rem">
+          吉田路線最高山屋，離山頂最近，看日出最從容！但 8 月幾乎秒殺
+        </div>
+      </div>
+    </div>
+
+    <!-- All huts toggle -->
+    <div class="hut-view-header fade-in">
+      <h3>📋 完整山屋一覽 <span style="font-size:.85rem;font-weight:400;color:var(--text-light)">（19 間）</span></h3>
+      <div class="hut-toggle">
+        <button class="hut-toggle-btn active" onclick="switchHutView('card', this)">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><rect x="1" y="1" width="6" height="6" rx="1"/><rect x="9" y="1" width="6" height="6" rx="1"/><rect x="1" y="9" width="6" height="6" rx="1"/><rect x="9" y="9" width="6" height="6" rx="1"/></svg>
+          卡片
+        </button>
+        <button class="hut-toggle-btn" onclick="switchHutView('table', this)">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><rect x="1" y="1" width="14" height="3" rx="1"/><rect x="1" y="6" width="14" height="2" rx="1"/><rect x="1" y="10" width="14" height="2" rx="1"/><rect x="1" y="14" width="14" height="1" rx="1"/></svg>
+          表格
+        </button>
+      </div>
+    </div>
+
+    <!-- CARD VIEW -->
+    <div id="hut-card-view" class="hut-grid fade-in">
+      <div class="hut-card"><div class="hut-zone">五合目周邊</div><div class="hut-name">佐藤小屋</div><div class="hut-elev">2,230m</div><div class="hut-price">¥6,500 起</div><div class="hut-note">容納 100人・090-3133-2230<br>適合登山前一晚住宿</div></div>
+      <div class="hut-card"><div class="hut-zone">五合目周邊</div><div class="hut-name">奥庭荘</div><div class="hut-elev">2,300m</div><div class="hut-price">—</div><div class="hut-note">容納 90人・0555-82-2910<br>適合登山前一晚住宿</div></div>
+      <div class="hut-card"><div class="hut-zone">五合目周邊</div><div class="hut-name">富士山みはらし</div><div class="hut-elev">2,305m</div><div class="hut-price">¥6,600 起</div><div class="hut-note">容納 68人・080-2681-3776<br>適合登山前一晚住宿</div></div>
+      <div class="hut-card"><div class="hut-zone">五合目周邊</div><div class="hut-name">富士急雲上閣（カプセル）</div><div class="hut-elev">2,305m</div><div class="hut-price">¥7,560 起</div><div class="hut-note">容納 53人・0555-72-1355<br>適合登山前一晚住宿</div></div>
+      <div class="hut-card"><div class="hut-zone">六合目</div><div class="hut-name">里見平星観荘</div><div class="hut-elev">2,325m</div><div class="hut-price">¥6,000 起</div><div class="hut-note">容納 100人・0555-24-6090</div></div>
+      <div class="hut-card"><div class="hut-zone">七合目</div><div class="hut-name">花小屋</div><div class="hut-elev">2,700m</div><div class="hut-price">¥5,800 起</div><div class="hut-note">容納 150人・090-7234-9955</div></div>
+      <div class="hut-card"><div class="hut-zone">七合目</div><div class="hut-name">日の出館</div><div class="hut-elev">2,720m</div><div class="hut-price">¥6,500 起</div><div class="hut-note">容納 150人・0555-24-6522</div></div>
+      <div class="hut-card"><div class="hut-zone">七合目</div><div class="hut-name">七合目トモエ館</div><div class="hut-elev">2,740m</div><div class="hut-price">¥8,000 起</div><div class="hut-note">容納 200人・0555-24-6521<br>連鎖（本八合目也有）</div></div>
+      <div class="hut-card"><div class="hut-zone">七合目</div><div class="hut-name">鎌岩館</div><div class="hut-elev">2,790m</div><div class="hut-price">—</div><div class="hut-note">容納 51人・080-1299-0223</div></div>
+      <div class="hut-card"><div class="hut-zone">七合目</div><div class="hut-name">富士一館</div><div class="hut-elev">2,800m</div><div class="hut-price">—</div><div class="hut-note">容納 130人・080-1036-6691</div></div>
+      <div class="hut-card"><div class="hut-zone">七合目</div><div class="hut-name">鳥居荘</div><div class="hut-elev">2,900m</div><div class="hut-price">—</div><div class="hut-note">容納 100人・0555-84-2050</div></div>
+      <div class="hut-card"><div class="hut-zone">七合目</div><div class="hut-name">東洋館</div><div class="hut-elev">3,000m</div><div class="hut-price">¥12,100 起</div><div class="hut-note">容納 320人・0555-22-1040<br>七合目最高處，規模大</div></div>
+      <div class="hut-card"><div class="hut-zone">八合目</div><div class="hut-name">太子館</div><div class="hut-elev">3,100m</div><div class="hut-price">¥10,000 起</div><div class="hut-note">容納 350人・0555-22-1947<br>旁邊就是救護所</div></div>
+      <div class="hut-card"><div class="hut-zone">八合目</div><div class="hut-name">蓬莱館</div><div class="hut-elev">3,150m</div><div class="hut-price">¥6,700 起</div><div class="hut-note">容納 180人・0555-24-6515</div></div>
+      <div class="hut-card hut-p2"><div class="hut-zone">八合目</div><div class="hut-name">白雲荘 ⭐ P2</div><div class="hut-elev">3,200m</div><div class="hut-price">¥9,900 起</div><div class="hut-note">容納 300人・090-7240-1282<br>評價穩定</div></div>
+      <div class="hut-card hut-p2"><div class="hut-zone">八合目</div><div class="hut-name">元祖室 ⭐ P2</div><div class="hut-elev">3,250m</div><div class="hut-price">¥10,000 起</div><div class="hut-note">容納 250人・090-4549-3250<br>與富士一館姊妹館</div></div>
+      <div class="hut-card"><div class="hut-zone">本八合目</div><div class="hut-name">本八合目富士山ホテル</div><div class="hut-elev">3,400m</div><div class="hut-price">¥9,250 起</div><div class="hut-note">容納 350人・0555-22-0237<br>規模最大，網路預約限日本國內</div></div>
+      <div class="hut-card hut-p1"><div class="hut-zone">本八合目</div><div class="hut-name">本八合目トモエ館 🥇 P1</div><div class="hut-elev">3,400m</div><div class="hut-price">¥8,500 起</div><div class="hut-note">容納 250人・0555-24-6511<br>台灣山友推薦，第一優先！</div></div>
+      <div class="hut-card hut-p3"><div class="hut-zone">八合五勺</div><div class="hut-name">御来光館 🌅 P3</div><div class="hut-elev">3,450m（最高）</div><div class="hut-price">¥11,000 起</div><div class="hut-note">容納 160人・0555-73-8815<br>吉田最高山屋，超難搶！</div></div>
+    </div>
+
+    <!-- TABLE VIEW -->
+    <div id="hut-table-view" style="display:none" class="routes-table-wrapper fade-in">
+      <table class="routes-table">
+        <thead>
+          <tr><th>山屋</th><th>位置</th><th>海拔</th><th>價格（起）</th><th>容納</th><th>電話</th><th>備註</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>佐藤小屋</td><td>五合目周邊</td><td>2,230m</td><td>¥6,500</td><td>100人</td><td>090-3133-2230</td><td>適合登山前一晚</td></tr>
+          <tr><td>奥庭荘</td><td>五合目周邊</td><td>2,300m</td><td>—</td><td>90人</td><td>0555-82-2910</td><td>適合登山前一晚</td></tr>
+          <tr><td>富士山みはらし</td><td>五合目周邊</td><td>2,305m</td><td>¥6,600</td><td>68人</td><td>080-2681-3776</td><td>適合登山前一晚</td></tr>
+          <tr><td>富士急雲上閣（カプセル）</td><td>五合目周邊</td><td>2,305m</td><td>¥7,560</td><td>53人</td><td>0555-72-1355</td><td>適合登山前一晚</td></tr>
+          <tr><td>里見平星観荘</td><td>六合目</td><td>2,325m</td><td>¥6,000</td><td>100人</td><td>0555-24-6090</td><td>—</td></tr>
+          <tr><td>花小屋</td><td>七合目</td><td>2,700m</td><td>¥5,800</td><td>150人</td><td>090-7234-9955</td><td>—</td></tr>
+          <tr><td>日の出館</td><td>七合目</td><td>2,720m</td><td>¥6,500</td><td>150人</td><td>0555-24-6522</td><td>—</td></tr>
+          <tr><td>七合目トモエ館</td><td>七合目</td><td>2,740m</td><td>¥8,000</td><td>200人</td><td>0555-24-6521</td><td>連鎖經營（本八合目也有）</td></tr>
+          <tr><td>鎌岩館</td><td>七合目</td><td>2,790m</td><td>—</td><td>51人</td><td>080-1299-0223</td><td>—</td></tr>
+          <tr><td>富士一館</td><td>七合目</td><td>2,800m</td><td>—</td><td>130人</td><td>080-1036-6691</td><td>—</td></tr>
+          <tr><td>鳥居荘</td><td>七合目</td><td>2,900m</td><td>—</td><td>100人</td><td>0555-84-2050</td><td>—</td></tr>
+          <tr><td>東洋館</td><td>七合目</td><td>3,000m</td><td>¥12,100</td><td>320人</td><td>0555-22-1040</td><td>七合目最高處、規模大</td></tr>
+          <tr><td>太子館</td><td>八合目</td><td>3,100m</td><td>¥10,000</td><td>350人</td><td>0555-22-1947</td><td>八合目救護所旁，規模大</td></tr>
+          <tr><td>蓬莱館</td><td>八合目</td><td>3,150m</td><td>¥6,700</td><td>180人</td><td>0555-24-6515</td><td>—</td></tr>
+          <tr class="highlight-row"><td><strong>白雲荘 ⭐</strong></td><td>八合目</td><td>3,200m</td><td>¥9,900</td><td>300人</td><td>090-7240-1282</td><td>評價穩定・P2 備選</td></tr>
+          <tr class="highlight-row"><td><strong>元祖室 ⭐</strong></td><td>八合目</td><td>3,250m</td><td>¥10,000</td><td>250人</td><td>090-4549-3250</td><td>姊妹館富士一館・P2 首選</td></tr>
+          <tr><td>本八合目富士山ホテル</td><td>本八合目</td><td>3,400m</td><td>¥9,250</td><td>350人</td><td>0555-22-0237</td><td>規模最大，網路預約限日本國內</td></tr>
+          <tr class="highlight-row" style="background:rgba(240,192,96,.12)"><td><strong>本八合目トモエ館 🥇</strong></td><td>本八合目</td><td>3,400m</td><td>¥8,500</td><td>250人</td><td>0555-24-6511</td><td>台灣山友推薦・P1 第一優先</td></tr>
+          <tr class="highlight-row" style="background:rgba(197,57,43,.05)"><td><strong>御来光館 🌅</strong></td><td>八合五勺</td><td>3,450m</td><td>¥11,000</td><td>160人</td><td>0555-73-8815</td><td>吉田最高山屋・P3</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div style="margin-top:1.5rem;background:#f0f4f8;border-radius:14px;padding:1.2rem 1.5rem;font-size:.88rem;color:var(--text-mid);line-height:1.7" class="fade-in">
+      <strong>💡 山屋注意事項：</strong>
+      旺季（週末或盂蘭盆節）非常容易滿房。週五和假日前一天加收約 ¥500–2,000 附加費。
+      多數山屋只收現金（不能刷卡），記得帶足零錢。山屋水源珍貴，不提供洗澡服務。
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════ SCHEDULE ════════════════ -->
+<section class="section section-alt" id="schedule">
+  <div class="container">
+    <div class="section-label">📅 行程規劃</div>
+    <h2 class="section-title">兩天一夜行程</h2>
+    <p class="section-desc">
+      第一順位Day1：8/7（週六）<br>第二順位Day1：8/6（週五）
+    </p>
+
+    <div class="timeline fade-in">
+      <div class="timeline-day">
+        <div class="timeline-day-title">Day 0｜前一晚抵達河口湖</div>
+        <div class="timeline-events">
+          <div class="timeline-event">
+            <div class="event-time">傍晚</div>
+            <div class="event-icon">🚌</div>
+            <div class="event-content">
+              <h4>抵達河口湖 / 富士山站周邊</h4>
+              <p>把交通與補給壓力前移，Day 1 不用太早起。可在周邊住宿休息，整理裝備。</p>
+            </div>
+          </div>
+          <div class="timeline-event">
+            <div class="event-time">晚上</div>
+            <div class="event-icon">🛒</div>
+            <div class="event-content">
+              <h4>補給採買</h4>
+              <p>確認行動糧、保暖衣物、頭燈、雨具等裝備是否齊全。帶足現金（硬幣尤重要）。</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="timeline-day">
+        <div class="timeline-day-title">Day 1｜攀登日（8/7 優先）</div>
+        <div class="timeline-events">
+          <div class="timeline-event">
+            <div class="event-time">09:00</div>
+            <div class="event-icon">🗻</div>
+            <div class="event-content">
+              <h4>抵達五合目</h4>
+              <p>午餐、補水、裝備確認。在高度適應約 30 分鐘後再起登，避免高山反應。</p>
+            </div>
+          </div>
+          <div class="timeline-event">
+            <div class="event-time">09:30–10:00</div>
+            <div class="event-icon">📝</div>
+            <div class="event-content">
+              <h4>入山手續 / 排隊</h4>
+              <p>繳交通行費 ¥4,000，完成裝備檢查。可購買金剛杖開始燒印之旅！</p>
+            </div>
+          </div>
+          <div class="timeline-event">
+            <div class="event-time">10:30</div>
+            <div class="event-icon">👟</div>
+            <div class="event-content">
+              <h4>起登！五合目 → 六合目 → 七合目</h4>
+              <p>穿過森林的平緩上坡→火山沙礫的之字形小徑。沿途在山屋燒印，享受文化體驗。</p>
+            </div>
+          </div>
+          <div class="timeline-event">
+            <div class="event-time">16:00–18:00</div>
+            <div class="event-icon">🏠</div>
+            <div class="event-content">
+              <h4>抵達山屋 check-in</h4>
+              <p>依預訂山屋海拔不同，抵達時間會有差異。整理行李、換上保暖衣物。</p>
+            </div>
+          </div>
+          <div class="timeline-event">
+            <div class="event-time">18:00–20:00</div>
+            <div class="event-icon">🍱</div>
+            <div class="event-content">
+              <h4>晚餐 / 補水 / 早點休息</h4>
+              <p>山屋熄燈較早，儘早休息為 Day 2 凌晨攻頂蓄積體力。</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Goraiko banner before Day 2 -->
+      <div class="goraiko-banner fade-in">
+        <img src="image 6.png" alt="富士山御來光 - 雲海日出" loading="lazy">
+        <div class="overlay">
+          <h3>🌅 Day 2 — 御來光</h3>
+          <p>在日本最高點，迎接從雲海升起的第一道曙光</p>
+        </div>
+      </div>
+
+      <div class="timeline-day">
+        <div class="timeline-day-title">Day 2｜攻頂 & 御來光</div>
+        <div class="timeline-events">
+          <div class="timeline-event">
+            <div class="event-time">01:00–03:00</div>
+            <div class="event-icon">⛏️</div>
+            <div class="event-content">
+              <h4>從山屋出發攻頂</h4>
+              <p>出發時間依山屋海拔決定：本八合目（約 03:00 出發）、八合目（約 01:30–02:00 出發）。確保帶上頭燈、防寒衣物。</p>
+            </div>
+          </div>
+          <div class="timeline-event">
+            <div class="event-time">04:30–05:00</div>
+            <div class="event-icon">🌅</div>
+            <div class="event-content">
+              <h4>山頂等待御來光</h4>
+              <p>提前抵達選好位置。旺季山頂人潮極多，建議往淺間大社奧宮或久須志神社方向稍移位置。</p>
+            </div>
+          </div>
+          <div class="timeline-event">
+            <div class="event-time">04:54</div>
+            <div class="event-icon">☀️</div>
+            <div class="event-content">
+              <h4>🌄 御來光！日出時刻</h4>
+              <p>8月富士山日出約 04:54。從日本最高點迎接第一道曙光，人生難忘的壯觀時刻！</p>
+            </div>
+          </div>
+          <div class="timeline-event">
+            <div class="event-time">05:00–06:00</div>
+            <div class="event-icon">⛩️</div>
+            <div class="event-content">
+              <h4>山頂探索（可選）</h4>
+              <p>參拜富士山本宮淺間大社奧宮、蓋御朱印、郵局寄明信片、御鉢巡（火山口繞行）等活動。</p>
+            </div>
+          </div>
+          <div class="timeline-event">
+            <div class="event-time">06:00–07:00</div>
+            <div class="event-icon">⬇️</div>
+            <div class="event-content">
+              <h4>開始下山</h4>
+              <p>走下山專用路線（與上山路不同），本八合目附近注意岔路勿走入須走路線（注意黃色路標）。</p>
+            </div>
+          </div>
+          <div class="timeline-event">
+            <div class="event-time">10:00–11:00</div>
+            <div class="event-icon">🎉</div>
+            <div class="event-content">
+              <h4>回到五合目！任務完成</h4>
+              <p>休息、用餐，乘巴士返回河口湖站或直接前往新宿。</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════ TRANSPORT ════════════════ -->
+<section class="section" id="transport">
+  <div class="container">
+    <div class="section-label">🚌 交通方式</div>
+    <h2 class="section-title">前往吉田路線登山口</h2>
+    <p class="section-desc">
+      三種主要交通方式，花火節後直接從河口湖出發最為便利。
+    </p>
+
+    <div class="transport-cards fade-in">
+      <div class="transport-card" style="border-top:4px solid var(--fuji-gold)">
+        <div class="t-header">
+          <div class="t-icon">🚌</div>
+          <div>
+            <h3>方式一（推薦）</h3>
+            <div class="t-num">河口湖站 → 五合目</div>
+          </div>
+        </div>
+        <div class="transport-info">
+          <div class="t-row"><div class="t-key">營運</div><div class="t-val">富士急巴士</div></div>
+          <div class="t-row"><div class="t-key">路線</div><div class="t-val">富士山駅 / 河口湖駅 → 富士スバルライン五合目</div></div>
+          <div class="t-row"><div class="t-key">車程</div><div class="t-val">約 50–60 分鐘</div></div>
+          <div class="t-row"><div class="t-key">票價</div><div class="t-val">單程 ¥1,950 ／ 來回 ¥3,000</div></div>
+          <div class="t-row"><div class="t-key">班次</div><div class="t-val">約每小時一班（首班約 06:00）</div></div>
+          <div class="t-row"><div class="t-key">回程末班</div><div class="t-val">約 18:45（45 分發車）</div></div>
+        </div>
+        <div style="margin-top:1rem;font-size:.82rem;background:#fef9e7;border-radius:8px;padding:.6rem .8rem;color:#7c5c00">
+          💡 花火節後已在河口湖周邊，直接搭巴士上山最順路！旺季建議提早到站排隊。
+        </div>
+      </div>
+
+      <div class="transport-card">
+        <div class="t-header">
+          <div class="t-icon">🚍</div>
+          <div>
+            <h3>方式二</h3>
+            <div class="t-num">新宿 → 五合目（直達高速巴士）</div>
+          </div>
+        </div>
+        <div class="transport-info">
+          <div class="t-row"><div class="t-key">營運</div><div class="t-val">京王巴士 ＋ 富士急巴士（聯營）</div></div>
+          <div class="t-row"><div class="t-key">路線</div><div class="t-val">バスタ新宿 → 富士山五合目（途經河口湖）</div></div>
+          <div class="t-row"><div class="t-key">車程</div><div class="t-val">約 2.5 小時（不塞車）</div></div>
+          <div class="t-row"><div class="t-key">票價</div><div class="t-val">約 ¥3,100（單程）</div></div>
+          <div class="t-row"><div class="t-key">班次</div><div class="t-val">登山季每日數班（夏季限定）</div></div>
+          <div class="t-row"><div class="t-key">預約</div><div class="t-val">Highway Bus.com 或富士急トラベル</div></div>
+        </div>
+      </div>
+
+      <div class="transport-card">
+        <div class="t-header">
+          <div class="t-icon">🚆</div>
+          <div>
+            <h3>方式三</h3>
+            <div class="t-num">新宿 → 河口湖 → 五合目</div>
+          </div>
+        </div>
+        <div class="transport-info">
+          <div class="t-row"><div class="t-key">電車</div><div class="t-val">JR 中央線特急「富士回遊」</div></div>
+          <div class="t-row"><div class="t-key">路線</div><div class="t-val">新宿 → 河口湖</div></div>
+          <div class="t-row"><div class="t-key">車程</div><div class="t-val">約 1 小時 50 分</div></div>
+          <div class="t-row"><div class="t-key">票價</div><div class="t-val">¥4,200（乘車券 ¥2,580 ＋ 特急券 ¥1,620）</div></div>
+          <div class="t-row"><div class="t-key">注意</div><div class="t-val">全車指定席，建議提前購票</div></div>
+          <div class="t-row"><div class="t-key">後續</div><div class="t-val">轉乘登山巴士（方式一）上五合目</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════ ATTRACTIONS ════════════════ -->
+<section class="section section-alt" id="attractions">
+  <div class="container">
+    <div class="section-label">✨ 特色景點與活動</div>
+    <h2 class="section-title">不只是登頂，更是儀式之旅</h2>
+    <p class="section-desc">
+      攀登富士山不只是「登頂」而已，沿途有許多具有日本文化特色的活動、儀式與景點，讓這次旅程充滿儀式感。
+    </p>
+
+    <div class="attraction-grid fade-in">
+      <div class="attraction-card">
+        <div class="attraction-photo-wrap">
+          <img src="image 3.png" alt="金剛杖" loading="lazy">
+        </div>
+        <div class="attraction-header">
+          <div class="attraction-emoji">🪄</div>
+          <div>
+            <h3>金剛杖燒印</h3>
+            <div class="attraction-sub">焼印・五合目購買</div>
+          </div>
+        </div>
+        <div class="attraction-body">
+          在五合目購買金剛杖（約 ¥1,000–2,000），每到一間山屋就燒一個印章（約 ¥200–500 / 個），最後整支杖就是登頂證明！記得帶足硬幣現金。
+        </div>
+      </div>
+
+      <div class="attraction-card">
+        <div class="attraction-photo-wrap">
+          <img src="image 4.png" alt="金剛杖燒印特寫（元祖室）" loading="lazy">
+        </div>
+        <div class="attraction-header">
+          <div class="attraction-emoji">🔥</div>
+          <div>
+            <h3>燒印特寫</h3>
+            <div class="attraction-sub">元祖室 3250m・令和紀念印</div>
+          </div>
+        </div>
+        <div class="attraction-body">
+          每間山屋都有獨特設計的燒印圖樣，例如元祖室的兔子印、各站海拔字樣等。這支杖就是你專屬的攀登紀念！
+        </div>
+      </div>
+
+      <div class="attraction-card">
+        <div class="attraction-photo-wrap">
+          <img src="image 5.png" alt="御來光・鳥居剪影" loading="lazy">
+        </div>
+        <div class="attraction-header">
+          <div class="attraction-emoji">🌅</div>
+          <div>
+            <h3>御來光</h3>
+            <div class="attraction-sub">ごらいこう・神聖日出</div>
+          </div>
+        </div>
+        <div class="attraction-body">
+          在日本最高點迎接「從雲海升起的第一道曙光」。吉田路線面向東北方，日出景觀最開闊。很多日本人認為一生一定要體驗一次的神聖體驗。
+        </div>
+      </div>
+
+      <div class="attraction-card">
+        <div class="attraction-header">
+          <div class="attraction-emoji">⛩️</div>
+          <div>
+            <h3>富士山本宮淺間大社奧宮</h3>
+            <div class="attraction-sub">日本最高神社・山頂</div>
+          </div>
+        </div>
+        <div class="attraction-body">
+          位於山頂，境內範圍涵蓋整個八合目以上（神域）。可參拜祈福、購買御守、蓋御朱印（富士山頂限定），非常有紀念價值！
+        </div>
+      </div>
+
+      <div class="attraction-card">
+        <div class="attraction-header">
+          <div class="attraction-emoji">📮</div>
+          <div>
+            <h3>富士山頂郵便局</h3>
+            <div class="attraction-sub">日本最高郵局・限定營業</div>
+          </div>
+        </div>
+        <div class="attraction-body">
+          夏季登山期間限定（7–9月，約 06:00–14:00）。可購買明信片蓋上富士山頂限定郵戳，寄給親友或寄給未來的自己，是很多人的人生紀念儀式！
+        </div>
+      </div>
+
+      <div class="attraction-card">
+        <div class="attraction-header">
+          <div class="attraction-emoji">🌋</div>
+          <div>
+            <h3>御鉢巡</h3>
+            <div class="attraction-sub">お鉢巡り・火山口巡禮</div>
+          </div>
+        </div>
+        <div class="attraction-body">
+          沿山頂火口邊緣走一圈（約 2.8km，1.5–3 小時）。360 度全景、俯瞰火山口（直徑 780m、深 200m）。途中會經過剣ヶ峰（3,776m，日本真正最高點）！
+        </div>
+      </div>
+
+      <div class="attraction-card">
+        <div class="attraction-header">
+          <div class="attraction-emoji">▲</div>
+          <div>
+            <h3>剣ヶ峰</h3>
+            <div class="attraction-sub">3,776m・日本最高點</div>
+          </div>
+        </div>
+        <div class="attraction-body">
+          御鉢巡途中必訪！有石碑可拍照打卡，旺季排隊可能超過 30 分鐘。最後一段「馬之背」斜坡非常陡，需小心攀登。
+        </div>
+      </div>
+
+      <div class="attraction-card">
+        <div class="attraction-header">
+          <div class="attraction-emoji">🌊</div>
+          <div>
+            <h3>影富士</h3>
+            <div class="attraction-sub">8月中旬以後・清晨限定</div>
+          </div>
+        </div>
+        <div class="attraction-body">
+          太陽從東邊升起時，富士山的巨大三角形影子投射在西邊雲海上的夢幻奇景。只有在山頂、天氣晴朗時才有機會見到。
+        </div>
+      </div>
+
+      <div class="attraction-card">
+        <div class="attraction-header">
+          <div class="attraction-emoji">🎖️</div>
+          <div>
+            <h3>山屋限定紀念品</h3>
+            <div class="attraction-sub">各山屋獨家商品</div>
+          </div>
+        </div>
+        <div class="attraction-body">
+          各山屋有限定紀念章（蓋在登山手冊上）、富士山高度毛巾、登頂限定 T-shirt、限定徽章、限定御守等，是只有在山上才能買到的珍貴紀念品。
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════ FOOTER ════════════════ -->
+<footer>
+  <div class="footer-logo">🗻</div>
+  <p><strong>富士山攀登｜2026 Aug.</strong></p>
+  <p style="margin-top:.5rem">吉田路線・御來光之旅・河口湖花火節連假</p>
+  <div style="margin-top:1.5rem;padding-top:1.5rem;border-top:1px solid rgba(255,255,255,.1);font-size:.8rem">
+    <p>參考資料：
+      <a href="https://www.fujisan-climb.jp/" style="color:var(--fuji-sky);text-decoration:none">富士登山オフィシャルサイト</a>
+      ・
+      <a href="https://hiking.biji.co/" style="color:var(--fuji-sky);text-decoration:none">健行筆記</a>
+    </p>
+    <p style="margin-top:.5rem;opacity:.5">本頁面由旅遊規劃文件自動轉換製作・僅供參考</p>
+  </div>
+</footer>
+
+<script>
+  // Hut view toggle
+  function switchHutView(view, btn) {
+    document.getElementById('hut-card-view').style.display = view === 'card' ? 'grid' : 'none';
+    document.getElementById('hut-table-view').style.display = view === 'table' ? 'block' : 'none';
+    btn.closest('.hut-toggle').querySelectorAll('.hut-toggle-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+  }
+
+  // Route tab switcher
+  function switchRouteTab(tab, btn) {
+    const wrap = btn.closest('.rtab-wrap');
+    wrap.querySelectorAll('.rtab-panel').forEach(p => p.style.display = 'none');
+    wrap.querySelectorAll('.rtab-btn').forEach(b => b.classList.remove('active'));
+    wrap.querySelector('#rtab-' + tab).style.display = 'block';
+    btn.classList.add('active');
+  }
+
+  // Intersection Observer for fade-in animations
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+  // Smooth active nav on scroll
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-links a');
+
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(section => {
+      const sectionTop = section.offsetTop - 100;
+      if (pageYOffset >= sectionTop) current = section.getAttribute('id');
+    });
+    navLinks.forEach(a => {
+      a.style.color = a.getAttribute('href') === '#' + current
+        ? 'hsl(45,85%,65%)' : '';
+    });
+  });
+</script>
+</body>
+</html>
+                                                                                                                                                                                                                                              
