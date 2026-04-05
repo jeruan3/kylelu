@@ -503,7 +503,16 @@
       font-size: 1rem;
       color: var(--fuji-blue);
       margin-bottom: .3rem;
+      text-decoration: none;
+      display: block;
     }
+    a.hut-name:hover { text-decoration: underline; opacity: .82; }
+
+    .priority-name a {
+      color: inherit;
+      text-decoration: none;
+    }
+    .priority-name a:hover { text-decoration: underline; opacity: .82; }
 
     .hut-elev {
       font-size: .82rem;
@@ -1705,7 +1714,7 @@
       <div class="priority-card p1">
         <div class="priority-num">P1</div>
         <div class="priority-label">第一優先</div>
-        <div class="priority-name">本八合目トモエ館</div>
+        <a href="https://tomoekan.com/" target="_blank" class="priority-name">本八合目トモエ館</a>
         <div style="font-size:.85rem;color:var(--text-mid);margin-top:.3rem">
           海拔 3,400m・本八合目（吉田/須走合流處）
         </div>
@@ -1723,7 +1732,7 @@
       <div class="priority-card p2">
         <div class="priority-num">P2</div>
         <div class="priority-label">第二優先</div>
-        <div class="priority-name">元祖室 ／ 白雲荘</div>
+        <div class="priority-name"><a href="https://www.ganso-muro.jp/" target="_blank">元祖室</a> ／ <a href="http://fujisan-hakuun.com/ja/" target="_blank">白雲荘</a></div>
         <div style="font-size:.85rem;color:var(--text-mid);margin-top:.3rem">
           海拔 3,250m / 3,200m・八合目
         </div>
@@ -1740,7 +1749,7 @@
       <div class="priority-card p3">
         <div class="priority-num">P3</div>
         <div class="priority-label">第三優先</div>
-        <div class="priority-name">御来光館</div>
+        <a href="https://www.goraikoukan.jp/" target="_blank" class="priority-name">御来光館</a>
         <div style="font-size:.85rem;color:var(--text-mid);margin-top:.3rem">
           海拔 3,450m・八合五勺（吉田最高山屋）
         </div>
@@ -1772,25 +1781,25 @@
 
     <!-- CARD VIEW -->
     <div id="hut-card-view" class="hut-grid fade-in">
-      <div class="hut-card"><div class="hut-zone">五合目周邊</div><div class="hut-name">佐藤小屋</div><div class="hut-elev">2,230m</div><div class="hut-price">¥6,500 起</div><div class="hut-note">容納 100人・090-3133-2230<br>適合登山前一晚住宿</div></div>
-      <div class="hut-card"><div class="hut-zone">五合目周邊</div><div class="hut-name">奥庭荘</div><div class="hut-elev">2,300m</div><div class="hut-price">—</div><div class="hut-note">容納 90人・0555-82-2910<br>適合登山前一晚住宿</div></div>
-      <div class="hut-card"><div class="hut-zone">五合目周邊</div><div class="hut-name">富士山みはらし</div><div class="hut-elev">2,305m</div><div class="hut-price">¥6,600 起</div><div class="hut-note">容納 68人・080-2681-3776<br>適合登山前一晚住宿</div></div>
-      <div class="hut-card"><div class="hut-zone">五合目周邊</div><div class="hut-name">富士急雲上閣（カプセル）</div><div class="hut-elev">2,305m</div><div class="hut-price">¥7,560 起</div><div class="hut-note">容納 53人・0555-72-1355<br>適合登山前一晚住宿</div></div>
-      <div class="hut-card"><div class="hut-zone">六合目</div><div class="hut-name">里見平星観荘</div><div class="hut-elev">2,325m</div><div class="hut-price">¥6,000 起</div><div class="hut-note">容納 100人・0555-24-6090</div></div>
-      <div class="hut-card"><div class="hut-zone">七合目</div><div class="hut-name">花小屋</div><div class="hut-elev">2,700m</div><div class="hut-price">¥5,800 起</div><div class="hut-note">容納 150人・090-7234-9955</div></div>
-      <div class="hut-card"><div class="hut-zone">七合目</div><div class="hut-name">日の出館</div><div class="hut-elev">2,720m</div><div class="hut-price">¥6,500 起</div><div class="hut-note">容納 150人・0555-24-6522</div></div>
-      <div class="hut-card"><div class="hut-zone">七合目</div><div class="hut-name">七合目トモエ館</div><div class="hut-elev">2,740m</div><div class="hut-price">¥8,000 起</div><div class="hut-note">容納 200人・0555-24-6521<br>連鎖（本八合目也有）</div></div>
-      <div class="hut-card"><div class="hut-zone">七合目</div><div class="hut-name">鎌岩館</div><div class="hut-elev">2,790m</div><div class="hut-price">—</div><div class="hut-note">容納 51人・080-1299-0223</div></div>
-      <div class="hut-card"><div class="hut-zone">七合目</div><div class="hut-name">富士一館</div><div class="hut-elev">2,800m</div><div class="hut-price">—</div><div class="hut-note">容納 130人・080-1036-6691</div></div>
-      <div class="hut-card"><div class="hut-zone">七合目</div><div class="hut-name">鳥居荘</div><div class="hut-elev">2,900m</div><div class="hut-price">—</div><div class="hut-note">容納 100人・0555-84-2050</div></div>
-      <div class="hut-card"><div class="hut-zone">七合目</div><div class="hut-name">東洋館</div><div class="hut-elev">3,000m</div><div class="hut-price">¥12,100 起</div><div class="hut-note">容納 320人・0555-22-1040<br>七合目最高處，規模大</div></div>
-      <div class="hut-card"><div class="hut-zone">八合目</div><div class="hut-name">太子館</div><div class="hut-elev">3,100m</div><div class="hut-price">¥10,000 起</div><div class="hut-note">容納 350人・0555-22-1947<br>旁邊就是救護所</div></div>
-      <div class="hut-card"><div class="hut-zone">八合目</div><div class="hut-name">蓬莱館</div><div class="hut-elev">3,150m</div><div class="hut-price">¥6,700 起</div><div class="hut-note">容納 180人・0555-24-6515</div></div>
-      <div class="hut-card hut-p2"><div class="hut-zone">八合目</div><div class="hut-name">白雲荘 ⭐ P2</div><div class="hut-elev">3,200m</div><div class="hut-price">¥9,900 起</div><div class="hut-note">容納 300人・090-7240-1282<br>評價穩定</div></div>
-      <div class="hut-card hut-p2"><div class="hut-zone">八合目</div><div class="hut-name">元祖室 ⭐ P2</div><div class="hut-elev">3,250m</div><div class="hut-price">¥10,000 起</div><div class="hut-note">容納 250人・090-4549-3250<br>與富士一館姊妹館</div></div>
-      <div class="hut-card"><div class="hut-zone">本八合目</div><div class="hut-name">本八合目富士山ホテル</div><div class="hut-elev">3,400m</div><div class="hut-price">¥9,250 起</div><div class="hut-note">容納 350人・0555-22-0237<br>規模最大，網路預約限日本國內</div></div>
-      <div class="hut-card hut-p1"><div class="hut-zone">本八合目</div><div class="hut-name">本八合目トモエ館 🥇 P1</div><div class="hut-elev">3,400m</div><div class="hut-price">¥8,500 起</div><div class="hut-note">容納 250人・0555-24-6511<br>台灣山友推薦，第一優先！</div></div>
-      <div class="hut-card hut-p3"><div class="hut-zone">八合五勺</div><div class="hut-name">御来光館 🌅 P3</div><div class="hut-elev">3,450m（最高）</div><div class="hut-price">¥11,000 起</div><div class="hut-note">容納 160人・0555-73-8815<br>吉田最高山屋，超難搶！</div></div>
+      <div class="hut-card"><div class="hut-zone">五合目周邊</div><a href="https://mtfuji.satogoya.jp/" target="_blank" class="hut-name">佐藤小屋</a><div class="hut-elev">2,230m</div><div class="hut-price">¥6,500 起</div><div class="hut-note">容納 100人・090-3133-2230<br>適合登山前一晚住宿</div></div>
+      <div class="hut-card"><div class="hut-zone">五合目周邊</div><a href="https://turbo.sakura.ne.jp/okuniwa/" target="_blank" class="hut-name">奥庭荘</a><div class="hut-elev">2,300m</div><div class="hut-price">—</div><div class="hut-note">容納 90人・0555-82-2910<br>適合登山前一晚住宿</div></div>
+      <div class="hut-card"><div class="hut-zone">五合目周邊</div><a href="https://www.fujisan5.com/" target="_blank" class="hut-name">富士山みはらし</a><div class="hut-elev">2,305m</div><div class="hut-price">¥6,600 起</div><div class="hut-note">容納 68人・080-2681-3776<br>適合登山前一晚住宿</div></div>
+      <div class="hut-card"><div class="hut-zone">五合目周邊</div><a href="https://www.unjokaku.jp/zh-CHT/stay/" target="_blank" class="hut-name">富士急雲上閣（カプセル）</a><div class="hut-elev">2,305m</div><div class="hut-price">¥7,560 起</div><div class="hut-note">容納 53人・0555-72-1355<br>適合登山前一晚住宿</div></div>
+      <div class="hut-card"><div class="hut-zone">六合目</div><a href="https://seikanso.jp/" target="_blank" class="hut-name">里見平星観荘</a><div class="hut-elev">2,325m</div><div class="hut-price">¥6,000 起</div><div class="hut-note">容納 100人・0555-24-6090</div></div>
+      <div class="hut-card"><div class="hut-zone">七合目</div><a href="https://www.yamanashi-kankou.jp/chinese_s/explore-by-area/fujisan-fujigoko/7th-station-hana-goya-mountain-lodge.html" target="_blank" class="hut-name">花小屋</a><div class="hut-elev">2,700m</div><div class="hut-price">¥5,800 起</div><div class="hut-note">容納 150人・090-7234-9955</div></div>
+      <div class="hut-card"><div class="hut-zone">七合目</div><a href="https://www.hinodekan-fujiyoshida.com/" target="_blank" class="hut-name">日の出館</a><div class="hut-elev">2,720m</div><div class="hut-price">¥6,500 起</div><div class="hut-note">容納 150人・0555-24-6522</div></div>
+      <div class="hut-card"><div class="hut-zone">七合目</div><a href="https://tomoekan.com/" target="_blank" class="hut-name">七合目トモエ館</a><div class="hut-elev">2,740m</div><div class="hut-price">¥8,000 起</div><div class="hut-note">容納 200人・0555-24-6521<br>連鎖（本八合目也有）</div></div>
+      <div class="hut-card"><div class="hut-zone">七合目</div><a href="https://kamaiwakan.jpn.org/" target="_blank" class="hut-name">鎌岩館</a><div class="hut-elev">2,790m</div><div class="hut-price">—</div><div class="hut-note">容納 51人・080-1299-0223</div></div>
+      <div class="hut-card"><div class="hut-zone">七合目</div><a href="https://www.fuji-ichikan.jp/" target="_blank" class="hut-name">富士一館</a><div class="hut-elev">2,800m</div><div class="hut-price">—</div><div class="hut-note">容納 130人・080-1036-6691</div></div>
+      <div class="hut-card"><div class="hut-zone">七合目</div><a href="https://toriiso.com/" target="_blank" class="hut-name">鳥居荘</a><div class="hut-elev">2,900m</div><div class="hut-price">—</div><div class="hut-note">容納 100人・0555-84-2050</div></div>
+      <div class="hut-card"><div class="hut-zone">七合目</div><a href="https://www.fuji-toyokan.jp/" target="_blank" class="hut-name">東洋館</a><div class="hut-elev">3,000m</div><div class="hut-price">¥12,100 起</div><div class="hut-note">容納 320人・0555-22-1040<br>七合目最高處，規模大</div></div>
+      <div class="hut-card"><div class="hut-zone">八合目</div><a href="https://www.mfi.or.jp/taisikan/" target="_blank" class="hut-name">太子館</a><div class="hut-elev">3,100m</div><div class="hut-price">¥10,000 起</div><div class="hut-note">容納 350人・0555-22-1947<br>旁邊就是救護所</div></div>
+      <div class="hut-card"><div class="hut-zone">八合目</div><a href="https://www.horaikan.jp/" target="_blank" class="hut-name">蓬莱館</a><div class="hut-elev">3,150m</div><div class="hut-price">¥6,700 起</div><div class="hut-note">容納 180人・0555-24-6515</div></div>
+      <div class="hut-card hut-p2"><div class="hut-zone">八合目</div><a href="http://fujisan-hakuun.com/ja/" target="_blank" class="hut-name">白雲荘 ⭐ P2</a><div class="hut-elev">3,200m</div><div class="hut-price">¥9,900 起</div><div class="hut-note">容納 300人・090-7240-1282<br>評價穩定</div></div>
+      <div class="hut-card hut-p2"><div class="hut-zone">八合目</div><a href="https://www.ganso-muro.jp/" target="_blank" class="hut-name">元祖室 ⭐ P2</a><div class="hut-elev">3,250m</div><div class="hut-price">¥10,000 起</div><div class="hut-note">容納 250人・090-4549-3250<br>與富士一館姊妹館</div></div>
+      <div class="hut-card"><div class="hut-zone">本八合目</div><a href="https://www.fujisanhotel.com/" target="_blank" class="hut-name">本八合目富士山ホテル</a><div class="hut-elev">3,400m</div><div class="hut-price">¥9,250 起</div><div class="hut-note">容納 350人・0555-22-0237<br>規模最大，網路預約限日本國內</div></div>
+      <div class="hut-card hut-p1"><div class="hut-zone">本八合目</div><a href="https://tomoekan.com/" target="_blank" class="hut-name">本八合目トモエ館 🥇 P1</a><div class="hut-elev">3,400m</div><div class="hut-price">¥8,500 起</div><div class="hut-note">容納 250人・0555-24-6511<br>台灣山友推薦，第一優先！</div></div>
+      <div class="hut-card hut-p3"><div class="hut-zone">八合五勺</div><a href="https://www.goraikoukan.jp/" target="_blank" class="hut-name">御来光館 🌅 P3</a><div class="hut-elev">3,450m（最高）</div><div class="hut-price">¥11,000 起</div><div class="hut-note">容納 160人・0555-73-8815<br>吉田最高山屋，超難搶！</div></div>
     </div>
 
     <!-- TABLE VIEW -->
@@ -1800,25 +1809,25 @@
           <tr><th>山屋</th><th>位置</th><th>海拔</th><th>價格（起）</th><th>容納</th><th>電話</th><th>備註</th></tr>
         </thead>
         <tbody>
-          <tr><td>佐藤小屋</td><td>五合目周邊</td><td>2,230m</td><td>¥6,500</td><td>100人</td><td>090-3133-2230</td><td>適合登山前一晚</td></tr>
-          <tr><td>奥庭荘</td><td>五合目周邊</td><td>2,300m</td><td>—</td><td>90人</td><td>0555-82-2910</td><td>適合登山前一晚</td></tr>
-          <tr><td>富士山みはらし</td><td>五合目周邊</td><td>2,305m</td><td>¥6,600</td><td>68人</td><td>080-2681-3776</td><td>適合登山前一晚</td></tr>
-          <tr><td>富士急雲上閣（カプセル）</td><td>五合目周邊</td><td>2,305m</td><td>¥7,560</td><td>53人</td><td>0555-72-1355</td><td>適合登山前一晚</td></tr>
-          <tr><td>里見平星観荘</td><td>六合目</td><td>2,325m</td><td>¥6,000</td><td>100人</td><td>0555-24-6090</td><td>—</td></tr>
-          <tr><td>花小屋</td><td>七合目</td><td>2,700m</td><td>¥5,800</td><td>150人</td><td>090-7234-9955</td><td>—</td></tr>
-          <tr><td>日の出館</td><td>七合目</td><td>2,720m</td><td>¥6,500</td><td>150人</td><td>0555-24-6522</td><td>—</td></tr>
-          <tr><td>七合目トモエ館</td><td>七合目</td><td>2,740m</td><td>¥8,000</td><td>200人</td><td>0555-24-6521</td><td>連鎖經營（本八合目也有）</td></tr>
-          <tr><td>鎌岩館</td><td>七合目</td><td>2,790m</td><td>—</td><td>51人</td><td>080-1299-0223</td><td>—</td></tr>
-          <tr><td>富士一館</td><td>七合目</td><td>2,800m</td><td>—</td><td>130人</td><td>080-1036-6691</td><td>—</td></tr>
-          <tr><td>鳥居荘</td><td>七合目</td><td>2,900m</td><td>—</td><td>100人</td><td>0555-84-2050</td><td>—</td></tr>
-          <tr><td>東洋館</td><td>七合目</td><td>3,000m</td><td>¥12,100</td><td>320人</td><td>0555-22-1040</td><td>七合目最高處、規模大</td></tr>
-          <tr><td>太子館</td><td>八合目</td><td>3,100m</td><td>¥10,000</td><td>350人</td><td>0555-22-1947</td><td>八合目救護所旁，規模大</td></tr>
-          <tr><td>蓬莱館</td><td>八合目</td><td>3,150m</td><td>¥6,700</td><td>180人</td><td>0555-24-6515</td><td>—</td></tr>
-          <tr class="highlight-row"><td><strong>白雲荘 ⭐</strong></td><td>八合目</td><td>3,200m</td><td>¥9,900</td><td>300人</td><td>090-7240-1282</td><td>評價穩定・P2 備選</td></tr>
-          <tr class="highlight-row"><td><strong>元祖室 ⭐</strong></td><td>八合目</td><td>3,250m</td><td>¥10,000</td><td>250人</td><td>090-4549-3250</td><td>姊妹館富士一館・P2 首選</td></tr>
-          <tr><td>本八合目富士山ホテル</td><td>本八合目</td><td>3,400m</td><td>¥9,250</td><td>350人</td><td>0555-22-0237</td><td>規模最大，網路預約限日本國內</td></tr>
-          <tr class="highlight-row" style="background:rgba(240,192,96,.12)"><td><strong>本八合目トモエ館 🥇</strong></td><td>本八合目</td><td>3,400m</td><td>¥8,500</td><td>250人</td><td>0555-24-6511</td><td>台灣山友推薦・P1 第一優先</td></tr>
-          <tr class="highlight-row" style="background:rgba(197,57,43,.05)"><td><strong>御来光館 🌅</strong></td><td>八合五勺</td><td>3,450m</td><td>¥11,000</td><td>160人</td><td>0555-73-8815</td><td>吉田最高山屋・P3</td></tr>
+          <tr><td><a href="https://mtfuji.satogoya.jp/" target="_blank">佐藤小屋</a></td><td>五合目周邊</td><td>2,230m</td><td>¥6,500</td><td>100人</td><td>090-3133-2230</td><td>適合登山前一晚</td></tr>
+          <tr><td><a href="https://turbo.sakura.ne.jp/okuniwa/" target="_blank">奥庭荘</a></td><td>五合目周邊</td><td>2,300m</td><td>—</td><td>90人</td><td>0555-82-2910</td><td>適合登山前一晚</td></tr>
+          <tr><td><a href="https://www.fujisan5.com/" target="_blank">富士山みはらし</a></td><td>五合目周邊</td><td>2,305m</td><td>¥6,600</td><td>68人</td><td>080-2681-3776</td><td>適合登山前一晚</td></tr>
+          <tr><td><a href="https://www.unjokaku.jp/zh-CHT/stay/" target="_blank">富士急雲上閣</a></td><td>五合目周邊</td><td>2,305m</td><td>¥7,560</td><td>53人</td><td>0555-72-1355</td><td>適合登山前一晚</td></tr>
+          <tr><td><a href="https://seikanso.jp/" target="_blank">里見平星観荘</a></td><td>六合目</td><td>2,325m</td><td>¥6,000</td><td>100人</td><td>0555-24-6090</td><td>—</td></tr>
+          <tr><td><a href="https://www.yamanashi-kankou.jp/chinese_s/explore-by-area/fujisan-fujigoko/7th-station-hana-goya-mountain-lodge.html" target="_blank">花小屋</a></td><td>七合目</td><td>2,700m</td><td>¥5,800</td><td>150人</td><td>090-7234-9955</td><td>—</td></tr>
+          <tr><td><a href="https://www.hinodekan-fujiyoshida.com/" target="_blank">日の出館</a></td><td>七合目</td><td>2,720m</td><td>¥6,500</td><td>150人</td><td>0555-24-6522</td><td>—</td></tr>
+          <tr><td><a href="https://tomoekan.com/" target="_blank">七合目トモエ館</a></td><td>七合目</td><td>2,740m</td><td>¥8,000</td><td>200人</td><td>0555-24-6521</td><td>連鎖（本八合目也有）</td></tr>
+          <tr><td><a href="https://kamaiwakan.jpn.org/" target="_blank">鎌岩館</a></td><td>七合目</td><td>2,790m</td><td>—</td><td>51人</td><td>080-1299-0223</td><td>—</td></tr>
+          <tr><td><a href="https://www.fuji-ichikan.jp/" target="_blank">富士一館</a></td><td>七合目</td><td>2,800m</td><td>—</td><td>130人</td><td>080-1036-6691</td><td>—</td></tr>
+          <tr><td><a href="https://toriiso.com/" target="_blank">鳥居荘</a></td><td>七合目</td><td>2,900m</td><td>—</td><td>100人</td><td>0555-84-2050</td><td>—</td></tr>
+          <tr><td><a href="https://www.fuji-toyokan.jp/" target="_blank">東洋館</a></td><td>七合目</td><td>3,000m</td><td>¥12,100</td><td>320人</td><td>0555-22-1040</td><td>七合目最高處、規模大</td></tr>
+          <tr><td><a href="https://www.mfi.or.jp/taisikan/" target="_blank">太子館</a></td><td>八合目</td><td>3,100m</td><td>¥10,000</td><td>350人</td><td>0555-22-1947</td><td>救護所旁，規模大</td></tr>
+          <tr><td><a href="https://www.horaikan.jp/" target="_blank">蓬莱館</a></td><td>八合目</td><td>3,150m</td><td>¥6,700</td><td>180人</td><td>0555-24-6515</td><td>—</td></tr>
+          <tr class="highlight-row"><td><a href="http://fujisan-hakuun.com/ja/" target="_blank"><strong>白雲荘 ⭐</strong></a></td><td>八合目</td><td>3,200m</td><td>¥9,900</td><td>300人</td><td>090-7240-1282</td><td>評價穩定・P2</td></tr>
+          <tr class="highlight-row"><td><a href="https://www.ganso-muro.jp/" target="_blank"><strong>元祖室 ⭐</strong></a></td><td>八合目</td><td>3,250m</td><td>¥10,000</td><td>250人</td><td>090-4549-3250</td><td>姊妹館富士一館・P2</td></tr>
+          <tr><td><a href="https://www.fujisanhotel.com/" target="_blank">本八合目富士山ホテル</a></td><td>本八合目</td><td>3,400m</td><td>¥9,250</td><td>350人</td><td>0555-22-0237</td><td>規模最大，網路預約限日本國內</td></tr>
+          <tr class="highlight-row" style="background:rgba(240,192,96,.12)"><td><a href="https://tomoekan.com/" target="_blank"><strong>本八合目トモエ館 🥇</strong></a></td><td>本八合目</td><td>3,400m</td><td>¥8,500</td><td>250人</td><td>0555-24-6511</td><td>台灣山友推薦・P1</td></tr>
+          <tr class="highlight-row" style="background:rgba(197,57,43,.05)"><td><a href="https://www.goraikoukan.jp/" target="_blank"><strong>御来光館 🌅</strong></a></td><td>八合五勺</td><td>3,450m</td><td>¥11,000</td><td>160人</td><td>0555-73-8815</td><td>吉田最高山屋・P3</td></tr>
         </tbody>
       </table>
     </div>
@@ -2246,4 +2255,3 @@
 </script>
 </body>
 </html>
-                                                                                                                                                                                                                                              
